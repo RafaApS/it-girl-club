@@ -1,0 +1,329 @@
+/* It Girl Club — style.css */
+/* 1. FONTES (Roboto local) */
+@font-face{font-family:Roboto;font-weight:300;font-display:swap;src:url(assets/fonts/Roboto-300.woff2) format("woff2")}
+@font-face{font-family:Roboto;font-weight:400;font-display:swap;src:url(assets/fonts/Roboto-400.woff2) format("woff2")}
+@font-face{font-family:Roboto;font-weight:500;font-display:swap;src:url(assets/fonts/Roboto-500.woff2) format("woff2")}
+@font-face{font-family:Roboto;font-weight:700;font-display:swap;src:url(assets/fonts/Roboto-700.woff2) format("woff2")}
+/* 2. VARIÁVEIS E TEMAS */
+:root{--bg:#fff;--bg2:#fdf3f6;--card:#fff;--txt:#2b2328;--mut:#6f6068;--rosa:#fba5a6;--rosa-s:#f7d6e2;--borda:#efdbe3;--r:14px}
+:root[data-theme=dark]{--bg:#17121a;--bg2:#211a25;--card:#241d29;--txt:#f5ecf0;--mut:#ffc1c2;--rosa:#fba5a6;--rosa-s:#4a2a39;--borda:#3a2f40}
+/* 3. BASE */
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{margin:0;font-family:Roboto,system-ui,sans-serif;font-weight:400;line-height:1.55;background:var(--bg);color:var(--txt);transition:background .3s,color .3s}
+h1,h2,h3,h4{font-weight:500;line-height:1.2;margin:0 0 .6em}h1{font-size:clamp(2.4rem,7vw,4.2rem);font-weight:300}h2{font-size:clamp(1.6rem,4vw,2.2rem)}
+a{color:inherit}ul{margin:0;padding:0;list-style:none}
+:focus-visible{outline:3px solid var(--rosa);outline-offset:2px}
+.skip-link{position:absolute;left:-999px}.skip-link:focus{left:8px;top:8px;background:var(--bg);padding:8px;z-index:100}
+.section{max-width:1100px;margin:0 auto;padding:64px 20px}
+/* 4. CABEÇALHO */
+.logo{
+    width: 40px;
+    height: auto;
+    border-radius: 20px;
+}
+.site-header{position:sticky;top:0;z-index:50;background:var(--bg);border-bottom:1px solid var(--borda)}
+.header-inner{max-width:1100px;margin:0 auto;padding:10px 20px;display:flex;align-items:center;gap:16px}
+.brand{font-weight:700;font-size:1.2rem;text-decoration:none;color:var(--rosa);margin-right:auto}
+.nav-list{display:flex;gap:22px}.nav-list a{text-decoration:none;color:var(--mut);padding:8px 2px}.nav-list a:hover{color:var(--rosa)}
+.header-actions{display:flex;gap:10px;align-items:center}
+.menu-toggle{display:none}/* Botão de tema */
+.theme-toggle {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 44px;
+    min-width: 44px;
+    height: 44px;
+    min-height: 44px;
+    padding: 0;
+
+    border: none !important;
+    outline: none;
+    box-shadow: none !important;
+    border-radius: 50%;
+
+    background: transparent !important;
+    color: var(--txt);
+
+    cursor: pointer;
+}
+
+/* Ícones */
+.theme-toggle .material-symbols-rounded {
+    position: absolute;
+    font-size: 24px;
+    line-height: 1;
+    pointer-events: none;
+}
+
+/* Tema claro: somente sol */
+.theme-toggle .icone-sol {
+    display: inline-block !important;
+}
+
+.theme-toggle .icone-lua {
+    display: none !important;
+}
+
+/* Tema escuro: somente lua */
+html[data-theme="dark"] .theme-toggle .icone-sol {
+    display: none !important;
+}
+
+html[data-theme="dark"] .theme-toggle .icone-lua {
+    display: inline-block !important;
+}
+/* HOME — TEMA ESCURO */
+html[data-theme="dark"] .home-visual {
+    background:
+        radial-gradient(
+            circle at 30% 30%,
+            rgba(74, 42, 57, 0.95),
+            transparent 60%
+        ),
+        radial-gradient(
+            circle at 70% 70%,
+            rgba(251, 165, 166, 1),
+            rgba(74, 42, 57, 0.95)
+        );
+
+    opacity: 1;
+    filter: blur(30px);
+}
+
+/* Mantém o esfumado da silhueta no tema escuro */
+html[data-theme="dark"] .busto {
+    -webkit-mask-image: linear-gradient(
+        to top,
+        transparent 0%,
+        rgba(0, 0, 0, 0.15) 20%,
+        rgba(0, 0, 0, 0.55) 40%,
+        black 70%
+    );
+
+    mask-image: linear-gradient(
+        to top,
+        transparent 0%,
+        rgba(0, 0, 0, 0.15) 20%,
+        rgba(0, 0, 0, 0.5) 40%,
+        black 0%,
+
+    );
+}
+/* Hover */
+.theme-toggle:hover {
+    background: transparent !important;
+    color: var(--rosa);
+}
+/* 5. BOTÕES */
+.btn,.theme-toggle,.menu-toggle,.modal-fechar,.seta,.opcao{font:inherit;cursor:pointer;min-height:44px}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:0 20px;border-radius:99px;text-decoration:none;border:1px solid var(--rosa);color:var(--rosa);background:transparent}
+.btn-primary,.btn-quiz-header{background:var(--rosa);color:var(--bg);font-weight:500}
+/* Botão padrão */
+.btn-quiz-header:hover{
+    transform: scale(1.15);
+    transition: transform .2s ease;
+}
+.btn-primary:hover{
+    transform: scale(1.15);
+    transition: transform .2s ease;
+    background: var(--bg2);
+    color: var(--rosa);
+}
+/* 6. HOME */
+/* HOME */
+.section-home {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 32px;
+    align-items: center;
+    min-height: 70vh;
+}
+
+/* Imagem */
+
+/* Container da imagem e do fundo */
+.home-art {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: visible;
+}
+
+/* Fundo atrás da silhueta */
+.home-visual {
+    position: absolute;
+    right: 140px;
+    top: 5px;
+
+    width: 100%;
+    height: 100%;
+
+    background: radial-gradient(
+        ellipse at center,
+        rgba(122, 189, 135, 0.30),
+        transparent 70%
+    );
+
+    filter: blur(25px);
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Imagem da silhueta */
+.busto {
+    position: relative;
+    z-index: 1;
+
+    width: 680px;
+    height: auto;
+    max-width: none;
+    bottom: 20px;
+    left: 80px;
+    object-fit: contain;
+
+     transform: translateX(-60px);
+
+    /* Esfumado de baixo para cima */
+    -webkit-mask-image: linear-gradient(
+        to top,
+        transparent 0%,
+        rgba(0, 0, 0, 0.15) 20%,
+        rgba(0, 0, 0, 0.55) 40%,
+        black 70%
+    );
+
+    mask-image: linear-gradient(
+        to top,
+        transparent 0%,
+        rgba(0, 0, 0, 0.15) 20%,
+        rgba(0, 0, 0, 0.55) 40%,
+        black 70%
+    );
+}
+/* Conteúdo */
+.home-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.home-intro {
+    font-size: 1.15rem;
+    color: var(--mut);
+    max-width: 46ch;
+}
+
+.home-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 24px;
+}
+.home-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+.home-visual{aspect-ratio:1;border-radius:50% 50% 45% 55%;background:radial-gradient(circle at 30% 30%,var(--rosa-s),transparent 60%),radial-gradient(circle at 70% 70%,var(--rosa),var(--rosa-s));opacity:.75;max-width:380px;width:100%;justify-self:center}
+.scroller {
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+}
+
+.scroller::-webkit-scrollbar,
+.scroller::-webkit-scrollbar-track,
+.scroller::-webkit-scrollbar-thumb {
+    display: none !important;
+    width: 0 !important;
+    height: 0 !important;
+    background: transparent !important;
+}
+
+.scroller li {
+    flex: 0 0 calc((100% - 64px) / 5);
+    min-width: 0;
+}
+
+/* 7. CATÁLOGO E EVENTOS */
+.fileira{margin-bottom:36px}.fileira h3{font-size:1.2rem}
+.fileira-area{position:relative}
+.scroller{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 2px 12px;scrollbar-width:thin}
+.card{flex:0 0 190px;scroll-snap-align:start;border:1px solid var(--borda);background:var(--card);border-radius:var(--r);padding:0;overflow:hidden;text-align:left;color:inherit;font:inherit;cursor:pointer}
+.card:hover{border-color:var(--rosa)}.card-nome{display:block;padding:10px 12px;font-size:.9rem}
+.imagem{position:relative;margin:0;aspect-ratio:3/4;background:var(--rosa-s);overflow:hidden}
+.imagem img{width:100%;height:100%;object-fit:cover;display:block}
+.sem-imagem{display:flex;align-items:center;justify-content:center;background:linear-gradient(160deg,var(--rosa-s),var(--bg2))}
+.selo{position:absolute;left:8px;bottom:8px;background:var(--bg);color:var(--rosa);font-size:.7rem;padding:2px 8px;border-radius:99px;border:1px solid var(--borda)}
+.seta{position:absolute;top:35%;width:44px;border-radius:50%;border:1px solid var(--borda);background:var(--bg);color:var(--rosa);z-index:2}
+.seta-ant{left:-10px}.seta-prox{right:-10px}
+/* 8. MODAL */
+.modal[hidden]{display:none}.modal{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;padding:16px}
+.modal-overlay{position:absolute;inset:0;background:rgba(0,0,0,.55)}
+.modal-painel{position:relative;background:var(--bg);border-radius:var(--r);max-width:780px;width:100%;max-height:92vh;overflow:auto;display:grid;grid-template-columns:1fr 1.2fr}
+.modal-fechar{position:absolute;right:10px;top:10px;z-index:2;border:1px solid var(--borda);background:var(--bg);color:var(--txt);border-radius:99px;padding:0 14px}
+.modal-imagem .imagem{height:100%;aspect-ratio:3/4}.modal-conteudo{padding:28px 22px}
+.modal-categoria{color:var(--rosa);margin:0 0 4px;font-size:.85rem}.aviso{color:var(--mut);font-size:.9rem;font-style:italic}
+/* 9. QUIZ */
+.section-quiz,.section-eventos{max-width:none;background:var(--bg2)}.quiz-container,.section-quiz>h2{max-width:860px;margin-left:auto;margin-right:auto}
+.section-eventos>*{max-width:1100px;margin-left:auto;margin-right:auto}.section-eventos{background:var(--bg)}
+.quiz-intro{font-size:1.2rem}.progresso{height:8px;background:var(--rosa-s);border-radius:99px;overflow:hidden;margin:0 0 6px}
+.progresso span{display:block;height:100%;background:var(--rosa);transition:width .3s}
+.opcoes{display:grid;gap:10px;margin:16px 0}
+.opcao{text-align:left;padding:12px 16px;border-radius:var(--r);border:1px solid var(--borda);background:var(--card);color:var(--txt)}
+.opcao:hover,.opcao[aria-pressed=true]{border-color:var(--rosa);background:var(--rosa-s)}
+.quiz-nav{display:flex;gap:10px}
+.resultado-bloco,.sec-card{background:var(--card);border:1px solid var(--borda);border-radius:var(--r);padding:22px;margin-bottom:20px}
+.resultado-bloco h3{font-size:1.6rem;color:var(--rosa)}.resultado-bloco h4{margin:18px 0 6px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}.chips li{background:var(--rosa-s);padding:4px 12px;border-radius:99px;font-size:.9rem}
+.galeria{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px}
+.sec-lista{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+/* 11. RODAPÉ */
+.site-footer{text-align:center;padding:40px 20px;border-top:1px solid var(--borda);color:var(--mut)}.footer-brand{color:var(--rosa);font-weight:700}
+.footer-top {
+    position: fixed;
+    right: 25px;
+    bottom: 25px;
+    z-index: 1000;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 48px;
+    height: 48px;
+
+    background: var(--rosa);
+    color: white;
+    border: none;
+    border-radius: 50%;
+
+    text-decoration: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+
+    transition: transform .2s ease, background .2s ease;
+}
+
+.footer-top .material-symbols-rounded {
+    font-size: 30px;
+}
+
+.footer-top:hover {
+    transform: translateY(-4px);
+    background: var(--rosa-escuro);
+    color: #fba5a6;
+}
+
+/* 12. RESPONSIVIDADE E ACESSIBILIDADE */
+@media(max-width:760px){
+ .menu-toggle{display:inline-flex;align-items:center}.btn-quiz-header{display:none}
+ .main-nav{display:none;position:absolute;left:0;right:0;top:100%;background:var(--bg);border-bottom:1px solid var(--borda);padding:8px 20px}.main-nav.aberto{display:block}
+ .nav-list{flex-direction:column;gap:0}.nav-list a{display:block;padding:12px 0}
+ .section-home{grid-template-columns:1fr;min-height:auto}.home-visual{max-width:220px;order:-1}
+ .modal-painel{grid-template-columns:1fr}.modal-imagem .imagem{aspect-ratio:4/3}
+ .card{flex-basis:150px}.seta{display:none}.galeria{grid-template-columns:repeat(2,1fr)}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}

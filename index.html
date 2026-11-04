@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>It Girl Club</title>
+    <meta
+      name="description"
+      content="It Girl Club: inspiração de looks, catálogo de estilos, quiz e eventos."
+    />
+    <!-- Caminhos relativos (compatível com GitHub Pages em subdiretório) -->
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+
+    <link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0"
+/>
+  </head>
+  
+  <body>
+    <header id="topo"></header>
+    <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
+
+    <!-- 1. CABEÇALHO E NAVEGAÇÃO -->
+    <header class="site-header" id="topo">
+      <div class="header-inner">
+        <img src="assets/logo/logo.jpeg" class="logo" alt="imagem da logo"> 
+        <a class="brand" href="#inicio">It Girl Club</a>
+
+        <nav
+          class="main-nav"
+          id="menu-principal"
+          aria-label="Navegação principal"
+        >
+          <ul class="nav-list">
+            <li><a href="#inicio">Início</a></li>
+            <li><a href="#catalogo">Catálogo</a></li>
+            <li><a href="#quiz">Quiz</a></li>
+          </ul>
+        </nav>
+
+        <div class="header-actions">
+          <a class="btn btn-quiz-header" href="#quiz">Fazer o quiz</a>
+          <button
+            class="theme-toggle"
+            id="botao-tema"
+            type="button"
+            aria-pressed="false"
+            aria-label="Alternar entre tema claro e escuro"
+          >
+
+    <span class="material-symbols-rounded icone-sol" aria-hidden="true">light_mode</span>
+    <span class="material-symbols-rounded icone-lua" aria-hidden="true">dark_mode</span>
+    <button
+    class="theme-toggle"
+    id="botao-tema"
+    type="button"
+    aria-label="Ativar tema escuro"
+    aria-pressed="false">
+</button>
+          </button>
+          <button
+            class="menu-toggle"
+            id="botao-menu"
+            type="button"
+            aria-expanded="false"
+            aria-controls="menu-principal"
+            aria-label="Abrir menu"
+          >
+            <span class="menu-toggle-bar" aria-hidden="true"></span>
+            <span class="menu-toggle-bar" aria-hidden="true"></span>
+            <span class="menu-toggle-bar" aria-hidden="true"></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main id="conteudo">
+      <!-- 2. PÁGINA INICIAL (elementos visuais apenas em CSS; assets/home/ reservado para banner futuro) -->
+      <section
+        class="section section-home"
+        id="inicio"
+        aria-labelledby="titulo-inicio"
+      >
+        <div class="home-text">
+          <h1 id="titulo-inicio">It Girl Club</h1>
+          <p class="home-intro" data-provisorio>
+            Looks, estilos e inspirações para você descobrir o que combina com a
+            sua personalidade.
+          </p>
+          <div class="home-actions">
+            <a class="btn btn-primary" href="#quiz">Fazer o quiz de estilo</a>
+          </div>
+        </div>
+        <div class="home-art">
+          <img src="assets/home/silhueta_mulher.svg" alt="imagem do perfil de uma mulher" class="busto">
+          <div class="home-visual" aria-hidden="true"></div>
+        </div>
+
+                  
+      </section>
+
+      <!-- 3. CATÁLOGO DE LOOKS (fileiras montadas pelo JavaScript) -->
+      <section
+        class="section section-catalogo"
+        id="catalogo"
+        aria-labelledby="titulo-catalogo"
+      >
+        <h2 id="titulo-catalogo">Catálogo de looks</h2>
+        <div class="catalogo-fileiras" id="catalogo-fileiras"></div>
+      </section>
+
+      <!-- 4. QUIZ DE ESTILO (conteúdo montado pelo JavaScript) -->
+      <section
+        class="section section-quiz"
+        id="quiz"
+        aria-labelledby="titulo-quiz"
+      >
+        <h2 id="titulo-quiz">Quiz de estilo</h2>
+        <div class="quiz-container" id="quiz-container"></div>
+      </section>
+
+
+    <!-- 6. RODAPÉ -->
+    <footer class="site-footer">
+      <p class="footer-brand">It Girl Club</p>
+      <p class="footer-note">
+        Site informativo e inspiracional. Não é uma loja virtual.
+      </p>
+    </footer>
+
+    <a class="footer-top" href="#topo" aria-label="Voltar ao topo">
+    <span class="material-symbols-rounded" aria-hidden="true">
+        keyboard_arrow_up
+    </span>
+</a>
+    <!-- MODAL DE DETALHES (usado por catálogo e eventos; preenchido pelo JavaScript) -->
+    <div
+      class="modal"
+      id="modal-detalhes"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modal-titulo"
+      hidden
+    >
+      <div class="modal-overlay" data-fechar-modal></div>
+      <div class="modal-painel">
+        <button
+          class="modal-fechar"
+          type="button"
+          data-fechar-modal
+          aria-label="Fechar detalhes"
+        >
+          Fechar
+        </button>
+        <div class="modal-imagem" id="modal-imagem"></div>
+        <div class="modal-conteudo">
+          <p class="modal-categoria" id="modal-categoria"></p>
+          <h3 id="modal-titulo"></h3>
+          <p id="modal-descricao"></p>
+          <div class="modal-lojas">
+            <h4>Onde pesquisar peças semelhantes</h4>
+            <ul id="modal-lojas-lista"></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
