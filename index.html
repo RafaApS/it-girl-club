@@ -11,7 +11,7 @@
     <!-- Caminhos relativos (compatível com GitHub Pages em subdiretório) -->
     <link rel="stylesheet" href="style.css" />
     <script src="script.js" defer></script>
-    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js" class="libras"></script>
 
     <link
   rel="stylesheet"
@@ -19,7 +19,12 @@
 />
   </head>
   
-  <body>
+  <body class="carregando">
+    <div class="loader" id="loader" role="status" aria-live="polite">
+      <div class="loader-spinner" aria-hidden="true"></div>
+      <p class="loader-titulo">It Girl Club</p>
+      <p class="loader-texto">Carregando os looks... <span id="loader-progresso"></span></p>
+    </div>
     <header id="topo"></header>
     <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
 
@@ -42,38 +47,30 @@
         </nav>
 
         <div class="header-actions">
-          <a class="btn btn-quiz-header" href="#quiz">Fazer o quiz</a>
-          <button
-            class="theme-toggle"
-            id="botao-tema"
-            type="button"
-            aria-pressed="false"
-            aria-label="Alternar entre tema claro e escuro"
-          >
+  <a class="btn btn-quiz-header" href="#quiz">Fazer o quiz</a>
 
-    <span class="material-symbols-rounded icone-sol" aria-hidden="true">light_mode</span>
-    <span class="material-symbols-rounded icone-lua" aria-hidden="true">dark_mode</span>
-    <button
+  <button
     class="theme-toggle"
     id="botao-tema"
     type="button"
-    aria-label="Ativar tema escuro"
-    aria-pressed="false">
-</button>
-          </button>
-          <button
-            class="menu-toggle"
-            id="botao-menu"
-            type="button"
-            aria-expanded="false"
-            aria-controls="menu-principal"
-            aria-label="Abrir menu"
-          >
-            <span class="menu-toggle-bar" aria-hidden="true"></span>
-            <span class="menu-toggle-bar" aria-hidden="true"></span>
-            <span class="menu-toggle-bar" aria-hidden="true"></span>
-          </button>
-        </div>
+    aria-pressed="false"
+    aria-label="Alternar entre tema claro e escuro"
+  >
+    <span class="material-symbols-rounded icone-sol" aria-hidden="true">light_mode</span>
+    <span class="material-symbols-rounded icone-lua" aria-hidden="true">dark_mode</span>
+  </button>
+
+  <button
+    class="menu-toggle"
+    id="botao-menu"
+    type="button"
+    aria-expanded="false"
+    aria-controls="menu-principal"
+    aria-label="Abrir menu"
+  >
+    <span class="material-symbols-rounded" aria-hidden="true">menu</span>
+  </button>
+</div>
       </div>
     </header>
 
